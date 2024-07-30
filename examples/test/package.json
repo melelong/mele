@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "description": "用于测试packages中脚手架命令和功能",
+  "main": "index.js",
+  "scripts": {
+    "mele": "mele"
+  },
+  "dependencies": {
+    "mele-cli": "workspace:*"
+  },
+  "author": "melelong",
+  "license": "MIT"
+}

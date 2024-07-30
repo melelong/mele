@@ -1,0 +1,46 @@
+{
+  "name": "mele-cli",
+  "version": "0.0.1",
+  "description": "A front-end scaffolding tool",
+  "bin": {
+    "mele": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/melelong/mele"
+  },
+  "homepage": "https://github.com/melelong/mele",
+  "scripts": {
+    "ts:init": "npx tsc --init",
+    "ts:run": "ts-node",
+    "dev": "ts-node ./src/index.ts",
+    "lint": "eslint . --fix",
+    "format": "prettier . --write"
+  },
+  "keywords": [
+    "mele",
+    "mele-cli",
+    "front-end",
+    "format",
+    "eslint",
+    "husky",
+    "prettier",
+    "vue",
+    "react",
+    "angular"
+  ],
+  "author": "melelong",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.8.0",
+    "@types/node": "^22.0.0",
+    "eslint": "9.x",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.8.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^7.18.0"
+  }
+}
