@@ -11,8 +11,14 @@
   },
   "homepage": "https://github.com/melelong/mele",
   "scripts": {
-    "ts:init": "npx tsc --init",
+    "ts:init": "tsc --init",
+    "webpack:init": "webpack init",
     "ts:run": "ts-node",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "ts:build": "tsc",
     "dev": "ts-node ./src/index.ts",
     "lint": "eslint . --fix",
     "format": "prettier . --write"
@@ -34,13 +40,21 @@
   "devDependencies": {
     "@eslint/js": "^9.8.0",
     "@types/node": "^22.0.0",
+    "@types/yargs": "^17.0.32",
+    "@webpack-cli/generators": "^3.0.7",
     "eslint": "9.x",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.8.0",
     "prettier": "^3.3.3",
+    "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^7.18.0"
+    "typescript-eslint": "^7.18.0",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "yargs": "^17.7.2"
   }
 }

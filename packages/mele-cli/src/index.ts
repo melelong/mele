@@ -1,3 +1,2 @@
-const a = 1
-
-console.log(a)
+#!/usr/bin/env node
+console.log(123)
