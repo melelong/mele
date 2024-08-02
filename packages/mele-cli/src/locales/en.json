@@ -1,0 +1,6 @@
+{
+  "mele_desc": "A front-end scaffolding tool",
+  "create_desc": "Create a new project",
+  "language_desc": "Set default language",
+  "patch_desc": "Add patches to existing projects"
+}

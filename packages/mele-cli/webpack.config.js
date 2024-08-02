@@ -1,19 +1,37 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const isProduction = process.env.NODE_ENV == 'production'
-
 const config = {
   entry: './src/index.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js'
+    path: path.resolve(__dirname, 'bin'),
+    filename: 'index.js',
+    library: {
+      name: 'mele-cli',
+      type: 'commonjs'
+    }
   },
+  target: 'node',
   plugins: [
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: './src/locales',
+          to: './locales'
+        },
+        {
+          from: './src/config',
+          to: './config'
+        },
+        {
+          from: './src/templates',
+          to: './templates'
+        }
+      ]
+    })
   ],
   module: {
     rules: [
@@ -25,14 +43,27 @@ const config = {
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: 'asset'
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
-
-      // Add your rules for custom modules here
-      // Learn more about loaders from https://webpack.js.org/loaders/
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js', '...']
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    },
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.cjs', '...']
+  },
+  stats: {
+    errorDetails: true
   }
 }
 
@@ -41,6 +72,7 @@ module.exports = () => {
     config.mode = 'production'
   } else {
     config.mode = 'development'
+    config.devtool = 'eval-source-map'
   }
   return config
 }

@@ -1,0 +1,6 @@
+{
+  "mele_desc": "一个前端脚手架工具",
+  "create_desc": "创建一个新项目",
+  "language_desc": "设置默认语言",
+  "patch_desc": "在原有的项目上添加补丁"
+}
