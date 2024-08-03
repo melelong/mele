@@ -8,6 +8,7 @@
     "lint": "pnpm --filter=mele-cli lint",
     "format": "pnpm --filter=mele-cli format",
     "tt": "pnpm --filter=mele-cli build:dev & pnpm --filter=test tt",
+    "ttt": "pnpm --filter=mele-cli build & pnpm --filter=test tt",
     "stage": "lint-staged",
     "prepare": "husky install"
   },
@@ -23,5 +24,6 @@
       "pnpm --filter=mele-cli lint",
       "pnpm --filter=mele-cli format"
     ]
-  }
+  },
+  "dependencies": {}
 }

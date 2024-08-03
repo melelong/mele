@@ -1,6 +1,11 @@
 {
-  "mele_desc": "一个前端脚手架工具",
-  "create_desc": "创建一个新项目",
-  "language_desc": "设置默认语言",
-  "patch_desc": "在原有的项目上添加补丁"
+  "CMD_MELE_DESC": "一个前端脚手架工具",
+  "CMD_VERSION_DESC": "查看版本信息",
+  "CMD_CREATE_DESC": "创建一个新项目",
+  "CMD_LANGUAGE_DESC": "设置默认语言",
+  "MSG_CMD_LANGUAGE_1": "请选择你的语言(输入对应数字)",
+  "MSG_CMD_LANGUAGE_LOADING": "正在设置语言中...",
+  "MSG_CMD_LANGUAGE_OK": "设置语言成功",
+  "MSG_CMD_LANGUAGE_EXIT": "退出设置",
+  "CMD_PATCH_DESC": "向现有项目添加补丁"
 }

@@ -5,6 +5,15 @@ import { Command, ParseOptions } from 'commander'
  */
 export interface CmdInterface {
   /**
+   * 获取命令实例
+   */
+  get cmd(): Command
+  /**
+   * 添加命令信息
+   * @param _info 命令信息
+   */
+  addInfo(_info: CommandInfo): void
+  /**
    * 创建命令实例
    * @param _name 命令名称
    * @returns

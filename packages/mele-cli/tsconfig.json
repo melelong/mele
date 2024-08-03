@@ -23,7 +23,7 @@
     /* 跳过库文件的类型检查，加快编译速度 */
     "skipLibCheck": true,
     /* 生成类型声明文件 */
-    "declaration": true,
+    "declaration": false,
     /* 不输出注释 */
     "removeComments": true,
     /* 允许非默认导出的模块使用default导入 */

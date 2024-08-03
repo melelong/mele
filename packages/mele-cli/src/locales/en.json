@@ -1,6 +1,11 @@
 {
-  "mele_desc": "A front-end scaffolding tool",
-  "create_desc": "Create a new project",
-  "language_desc": "Set default language",
-  "patch_desc": "Add patches to existing projects"
+  "CMD_MELE_DESC": "A front-end scaffolding tool",
+  "CMD_VERSION_DESC": "View version info",
+  "CMD_CREATE_DESC": "Create a new project",
+  "CMD_LANGUAGE_DESC": "Set default language",
+  "MSG_CMD_LANGUAGE_1": "Please select your language (enter the corresponding number)",
+  "MSG_CMD_LANGUAGE_LOADING": "Setting language...",
+  "MSG_CMD_LANGUAGE_OK": "Language setting successful",
+  "MSG_CMD_LANGUAGE_EXIT": "Exit Settings",
+  "CMD_PATCH_DESC": "Add patches to existing projects"
 }

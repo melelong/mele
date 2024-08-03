@@ -1,5 +1,5 @@
 /**
- * 编码
+ * 编码类型
  */
 declare type EncodingType = {
   encoding?: null | undefined
@@ -24,6 +24,10 @@ declare type PackageJson = {
   }
 }
 /**
+ * 模块集合类型
+ */
+declare type ModulesType = { [_moduleName: string]: any }
+/**
  * cli.config.json
  */
 declare type CliConfig = {
@@ -42,13 +46,26 @@ declare type CommandInfo = {
    */
   name: string
   /**
-   * 命令别名
+   * 命令别名数组
    */
-  alias: string
+  alias?: string[]
   /**
    * 命令描述
    */
-  description: string
+  desc: string
+  /**
+   * 命令选项数组
+   */
+  options?: {
+    /**
+     * 命令选项
+     */
+    option: string
+    /**
+     * 命令选项描述
+     */
+    desc: string
+  }[]
   /**
    * 命令动作
    */

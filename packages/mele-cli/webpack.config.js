@@ -2,20 +2,28 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const webpack = require('webpack')
 const isProduction = process.env.NODE_ENV == 'production'
 const config = {
-  entry: './src/index.ts',
+  entry: ['./src/index.ts'],
   output: {
     path: path.resolve(__dirname, 'bin'),
-    filename: 'index.js',
+    filename: 'index.cjs',
     library: {
-      name: 'mele-cli',
       type: 'commonjs'
     }
   },
   target: 'node',
   plugins: [
     new CleanWebpackPlugin(),
+    // new BundleAnalyzerPlugin({
+    //   analyzerPort: 8888
+    // }),
+    new webpack.BannerPlugin({
+      raw: true,
+      banner: '#!/usr/bin/env node'
+    }),
     new CopyPlugin({
       patterns: [
         {
@@ -29,6 +37,10 @@ const config = {
         {
           from: './src/templates',
           to: './templates'
+        },
+        {
+          from: './package.json',
+          to: '.'
         }
       ]
     })
@@ -48,10 +60,7 @@ const config = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
+          loader: 'babel-loader'
         }
       }
     ]

@@ -1,24 +1,27 @@
-import { CmdModule } from '@/modules/cmd.module'
+import { ActionModule } from '@/modules/action.module'
 import { CmdService } from '@/services/cmd.service'
 import { I18nService } from '@/services/i18n.service'
-import { UtilsService } from '@/services/utils.service'
 import { ActionInterface } from '@/types/interfaces/action.interface'
-
+/**
+ * create 命令(中间容器 ActionModule )
+ */
 export class CreateAction implements ActionInterface {
-  private readonly utilsService: UtilsService
+  static moduleName: string = 'CreateAction'
   private readonly cmdService: CmdService
-  constructor(private readonly cmdModule?: CmdModule) {
-    this.utilsService = cmdModule.get(UtilsService.name)
-    this.cmdService = cmdModule.get(CmdService.name)
+  private readonly i18nService: I18nService
+  constructor(private readonly actionModule?: ActionModule) {
+    // 注入依赖
+    this.cmdService = actionModule.get(CmdService.moduleName)
+    this.i18nService = actionModule.get(I18nService.moduleName)
   }
   init() {
-    CmdService.commandInfos.push(this.commandInfo)
+    this.cmdService.addInfo(this.commandInfo)
   }
   get commandInfo(): CommandInfo {
     return {
       name: 'create <project>',
-      alias: 'new',
-      description: I18nService.i18n.__('create_desc'),
+      alias: ['new'],
+      desc: this.i18nService.t('CMD_CREATE_DESC'),
       action(_option) {
         console.log(_option)
       }

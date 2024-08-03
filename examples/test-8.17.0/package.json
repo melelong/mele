@@ -1,0 +1,14 @@
+{
+  "name": "test-8.17.0",
+  "version": "8.17.0 ",
+  "description": "用于测试packages中脚手架命令和功能",
+  "main": "index.js",
+  "scripts": {
+    "mele": "npx mele",
+    "ttt": "npm i & cls & npm run mele -h",
+    "tt": "npm i & cls & npm run mele -h"
+  },
+  "dependencies": {},
+  "author": "melelong",
+  "license": "MIT"
+}

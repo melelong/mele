@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "mele": "mele",
+    "ttt": "pnpm i & cls & pnpm mele -h",
     "tt": "pnpm i & cls & pnpm mele -h"
   },
   "dependencies": {

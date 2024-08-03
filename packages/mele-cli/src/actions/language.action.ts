@@ -1,26 +1,56 @@
-import { CmdModule } from '@/modules/cmd.module'
+import { CLI_CONFIG_PATH } from '@/constants/cli.const'
+import { ActionModule } from '@/modules/action.module'
 import { CmdService } from '@/services/cmd.service'
+import { ConsoleService } from '@/services/console.service'
+import { FileService } from '@/services/file.service'
 import { I18nService } from '@/services/i18n.service'
-import { UtilsService } from '@/services/utils.service'
 import { ActionInterface } from '@/types/interfaces/action.interface'
-
-export class LanguageAction implements ActionInterface {
-  private readonly utilsService: UtilsService
+import { LanguageInterface } from '@/types/interfaces/language.interface'
+import rawlist from '@inquirer/rawlist'
+/**
+ * language 命令(中间容器 ActionModule )
+ */
+export class LanguageAction implements ActionInterface, LanguageInterface {
+  static moduleName: string = 'LanguageAction'
   private readonly cmdService: CmdService
-  constructor(private readonly cmdModule?: CmdModule) {
-    this.utilsService = cmdModule.get(UtilsService.name)
-    this.cmdService = cmdModule.get(CmdService.name)
+  private readonly i18nService: I18nService
+  private readonly fileService: FileService
+  private readonly consoleService: ConsoleService
+  constructor(private readonly actionModule?: ActionModule) {
+    // 注入依赖
+    this.cmdService = actionModule.get(CmdService.moduleName)
+    this.i18nService = actionModule.get(I18nService.moduleName)
+    this.fileService = actionModule.get(FileService.moduleName)
+    this.consoleService = actionModule.get(ConsoleService.moduleName)
   }
   init() {
-    CmdService.commandInfos.push(this.commandInfo)
+    this.cmdService.addInfo(this.commandInfo)
   }
   get commandInfo(): CommandInfo {
+    const choices = this.i18nService.getLocales().map((item) => ({
+      name: item,
+      value: item
+    }))
+    const config = this.i18nService.readConfig()
     return {
       name: 'language',
-      alias: 'lang',
-      description: I18nService.i18n.__('language_desc'),
-      action(_option) {
-        console.log(_option)
+      alias: ['lang'],
+      desc: this.i18nService.t('CMD_LANGUAGE_DESC'),
+      action: async (_option) => {
+        const spinner = this.consoleService.ora()
+        try {
+          const answers = await rawlist({
+            message: this.i18nService.t('MSG_CMD_LANGUAGE_1'),
+            choices
+          })
+          if (answers !== config.i18n.defaultLocale) {
+            config.i18n.defaultLocale = answers
+            this.fileService.writeFile(CLI_CONFIG_PATH, JSON.stringify(config))
+          }
+          spinner.succeed(this.i18nService.t('MSG_CMD_LANGUAGE_OK'))
+        } catch {
+          spinner.fail(this.i18nService.t('MSG_CMD_LANGUAGE_EXIT'))
+        }
       }
     }
   }
