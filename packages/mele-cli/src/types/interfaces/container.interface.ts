@@ -1,4 +1,23 @@
 /**
+ * 模块类型 [模块构造函数,模块依赖容器构造函数] | [模块构造函数]
+ */
+export type AddModule = [ModuleFnType, ContainerFnType] | [ModuleFnType]
+/**
+ * 模块构造函数类型
+ */
+export type ModuleFnType = {
+  new (..._args: any[]): any
+  moduleName: string
+} & ThisType<any>
+/**
+ * 模块依赖容器构造函数类型
+ */
+export type ContainerFnType = new (..._args: any[]) => any
+/**
+ * 添加模块类型数组
+ */
+export type AddModuleArray = AddModule[]
+/**
  * 容器服务实现接口
  */
 export interface ContainerInterface {
@@ -16,10 +35,10 @@ export interface ContainerInterface {
    * @param _moduleFn 模块构造函数
    * @param _containerFn 模块依赖容器构造函数
    */
-  add<CT, MT>(
+  add<MT, CT>(
     _key: string,
-    _moduleFn: new (..._args: any[]) => CT,
-    _containerFn?: new (..._args: any[]) => MT
+    _moduleFn: new (..._args: any[]) => MT,
+    _containerFn?: new (..._args: any[]) => CT
   ): void
   /**
    * 获取依赖
@@ -28,8 +47,15 @@ export interface ContainerInterface {
    */
   get(_key: string): any
   /**
-   * 自动注入依赖(但是没有代码提示)
+   * 注入全部依赖(PS: 需要提前定义变量名(必须以构造函数名字的小写开头)，不然没有代码提示)
+   * @example private readonly patchAction: PatchAction
+   * @example private readonly 变量名: 构造函数
    * @param _module 模块实例
    */
-  autoInjection<MT>(_module: MT): void
+  allInjection<MT>(_module: MT): void
+  /**
+   * 添加所有依赖
+   * @param _addModuleList 添加依赖模块列表
+   */
+  allAdd(_addModuleList: AddModuleArray): void
 }

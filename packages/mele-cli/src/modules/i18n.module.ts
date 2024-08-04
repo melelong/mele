@@ -6,8 +6,6 @@ import { FileService } from '@/services/file.service'
 export class I18nModule extends ContainerService {
   constructor() {
     super()
-    // 添加服务依赖
-    this.add(FileService.moduleName, FileService)
-    // console.log('I18nModule', this.dependencyList)
+    this.allAdd([[FileService]])
   }
 }

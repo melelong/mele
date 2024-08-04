@@ -3,10 +3,10 @@ import { CmdService } from '@/services/cmd.service'
 import { I18nService } from '@/services/i18n.service'
 import { ActionInterface } from '@/types/interfaces/action.interface'
 /**
- * patch 命令(中间容器 ActionModule )
+ * generate 命令(中间容器 ActionModule )
  */
-export class PatchAction implements ActionInterface {
-  static moduleName: string = 'PatchAction'
+export class GenerateAction implements ActionInterface {
+  static moduleName: string = 'GenerateAction'
   private readonly cmdService: CmdService
   private readonly i18nService: I18nService
   constructor(private readonly actionModule?: ActionModule) {
@@ -17,9 +17,9 @@ export class PatchAction implements ActionInterface {
   }
   get commandInfo(): CommandInfo {
     return {
-      name: 'patch',
-      alias: ['p', 'pp', 'p1'],
-      desc: this.i18nService.t('CMD_PATCH_DESC'),
+      name: 'generate',
+      alias: ['g'],
+      desc: this.i18nService.t('CMD_GENERATE_DESC'),
       action(_option) {
         console.log(_option)
       }

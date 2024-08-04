@@ -10,9 +10,7 @@ export class CreateAction implements ActionInterface {
   private readonly cmdService: CmdService
   private readonly i18nService: I18nService
   constructor(private readonly actionModule?: ActionModule) {
-    // 注入依赖
-    this.cmdService = actionModule.get(CmdService.moduleName)
-    this.i18nService = actionModule.get(I18nService.moduleName)
+    actionModule.allInjection(this)
   }
   init() {
     this.cmdService.addInfo(this.commandInfo)

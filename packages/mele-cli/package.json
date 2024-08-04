@@ -18,14 +18,18 @@
     "link": "npm link mele-cli",
     "link:undo": "npm unlink mele-cli",
     "webpack:init": "webpack init",
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
+    "build": "webpack --mode=production --node-env=prod",
+    "build:pre": "webpack --mode=production --node-env=pre",
+    "build:dev": "webpack --mode=development --node-env=dev",
+    "build:prod": "webpack --mode=production --node-env=prod",
     "watch": "webpack --watch",
     "dev": "ts-node ./src/index.ts",
     "lint": "eslint . --fix",
     "format": "prettier . --write"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "mele",
     "mele-cli",

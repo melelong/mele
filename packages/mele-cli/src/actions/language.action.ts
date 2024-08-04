@@ -17,11 +17,7 @@ export class LanguageAction implements ActionInterface, LanguageInterface {
   private readonly fileService: FileService
   private readonly consoleService: ConsoleService
   constructor(private readonly actionModule?: ActionModule) {
-    // 注入依赖
-    this.cmdService = actionModule.get(CmdService.moduleName)
-    this.i18nService = actionModule.get(I18nService.moduleName)
-    this.fileService = actionModule.get(FileService.moduleName)
-    this.consoleService = actionModule.get(ConsoleService.moduleName)
+    actionModule.allInjection(this)
   }
   init() {
     this.cmdService.addInfo(this.commandInfo)

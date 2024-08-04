@@ -28,6 +28,8 @@ export class CmdService implements CmdInterface {
     // 注入依赖
     this.i18nService = cmdModule.get(I18nService.moduleName)
     this.consoleService = cmdModule.get(ConsoleService.moduleName)
+    // 设置命令用法信息
+    CmdService._cmd.usage(`${this.i18nService.t('CMD_MELE_USAGE')}`)
     // 设置命令描述
     CmdService._cmd.description(this.i18nService.t('CMD_MELE_DESC'))
   }
@@ -43,7 +45,7 @@ export class CmdService implements CmdInterface {
   setVersion(_version: string): void {
     const _opts = '-v, --version'
     CmdService._cmd.version(
-      `V${_version || CLI_DEFAULT_VERSION}`,
+      `v${_version || CLI_DEFAULT_VERSION}`,
       _opts,
       this.i18nService.t('CMD_VERSION_DESC')
     )

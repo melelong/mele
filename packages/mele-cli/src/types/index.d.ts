@@ -24,10 +24,6 @@ declare type PackageJson = {
   }
 }
 /**
- * 模块集合类型
- */
-declare type ModulesType = { [_moduleName: string]: any }
-/**
  * cli.config.json
  */
 declare type CliConfig = {

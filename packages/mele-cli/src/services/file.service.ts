@@ -16,4 +16,14 @@ export class FileService implements FileInterface {
       ? writeFileSync(_path, _data, _options)
       : writeFileSync(_path, _data, CLI_ENCODING_TYPE)
   }
+  get cwdPath(): string {
+    return process.cwd()
+  }
+  get scriptDirPath(): string {
+    return __dirname
+  }
+
+  get scriptFilePath(): string {
+    return __filename
+  }
 }

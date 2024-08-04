@@ -1,5 +1,6 @@
 {
   "CMD_MELE_DESC": "A front-end scaffolding tool",
+  "CMD_MELE_USAGE": "[command] [options]",
   "CMD_VERSION_DESC": "View version info",
   "CMD_CREATE_DESC": "Create a new project",
   "CMD_LANGUAGE_DESC": "Set default language",
@@ -7,5 +8,6 @@
   "MSG_CMD_LANGUAGE_LOADING": "Setting language...",
   "MSG_CMD_LANGUAGE_OK": "Language setting successful",
   "MSG_CMD_LANGUAGE_EXIT": "Exit Settings",
-  "CMD_PATCH_DESC": "Add patches to existing projects"
+  "CMD_PATCH_DESC": "Add patches to existing projects",
+  "CMD_GENERATE_DESC": "Generate file"
 }

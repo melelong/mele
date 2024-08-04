@@ -27,6 +27,7 @@ export class ConsoleService implements ConsoleInterface {
     ConsoleService._BG_WhiteList = [...ConsoleService._BG_WhiteList, ..._opts]
   }
   isInWhitelist(_whiteList: string[]): boolean {
+    console.log(process.argv)
     return process.argv.filter((item) => _whiteList.includes(item)).length !== 0
   }
   ora(_options?: string | Options): Ora {

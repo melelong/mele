@@ -8,9 +8,6 @@ import { ConsoleService } from '@/services/console.service'
 export class CmdModule extends ContainerService {
   constructor() {
     super()
-    // 添加服务
-    this.add(I18nService.moduleName, I18nService, I18nModule)
-    this.add(ConsoleService.moduleName, ConsoleService)
-    // console.log('CmdModule', this.dependencyList)
+    this.allAdd([[I18nService, I18nModule], [ConsoleService]])
   }
 }

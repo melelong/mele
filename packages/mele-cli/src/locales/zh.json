@@ -1,5 +1,6 @@
 {
   "CMD_MELE_DESC": "一个前端脚手架工具",
+  "CMD_MELE_USAGE": "[命令] [参数]",
   "CMD_VERSION_DESC": "查看版本信息",
   "CMD_CREATE_DESC": "创建一个新项目",
   "CMD_LANGUAGE_DESC": "设置默认语言",
@@ -7,5 +8,6 @@
   "MSG_CMD_LANGUAGE_LOADING": "正在设置语言中...",
   "MSG_CMD_LANGUAGE_OK": "设置语言成功",
   "MSG_CMD_LANGUAGE_EXIT": "退出设置",
-  "CMD_PATCH_DESC": "向现有项目添加补丁"
+  "CMD_PATCH_DESC": "向现有项目添加补丁",
+  "CMD_GENERATE_DESC": "生成文件"
 }

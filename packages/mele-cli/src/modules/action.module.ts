@@ -11,10 +11,11 @@ import { ConsoleService } from '@/services/console.service'
 export class ActionModule extends ContainerService {
   constructor() {
     super()
-    // 添加服务依赖
-    this.add(CmdService.moduleName, CmdService, CmdModule)
-    this.add(I18nService.moduleName, I18nService, I18nModule)
-    this.add(FileService.moduleName, FileService)
-    this.add(ConsoleService.moduleName, ConsoleService)
+    this.allAdd([
+      [CmdService, CmdModule],
+      [I18nService, I18nModule],
+      [FileService],
+      [ConsoleService]
+    ])
   }
 }

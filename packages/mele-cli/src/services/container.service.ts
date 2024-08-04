@@ -1,4 +1,4 @@
-import { ContainerInterface } from '@/types/interfaces/container.interface'
+import { AddModuleArray, ContainerInterface } from '@/types/interfaces/container.interface'
 /**
  * 容器服务具体实现(模块与依赖的中间容器)
  */
@@ -11,9 +11,9 @@ export class ContainerService implements ContainerInterface {
     _moduleFn: new (..._args: any[]) => CT,
     _containerFn?: new (..._args: any[]) => MT
   ): void {
-    !_containerFn
-      ? this.modules.set(_key, new _moduleFn())
-      : this.modules.set(_key, new _moduleFn(new _containerFn()))
+    _containerFn
+      ? this.modules.set(_key, new _moduleFn(new _containerFn()))
+      : this.modules.set(_key, new _moduleFn())
     // 添加到依赖列表
     this.dependencyList.push(_key)
   }
@@ -22,9 +22,17 @@ export class ContainerService implements ContainerInterface {
     if (!module) throw new Error(`${_key}模块没找到`)
     return module
   }
-  autoInjection<MT>(_module: MT): void {
+  allInjection<MT>(_module: MT): void {
     this.dependencyList.forEach((moduleName: string) => {
-      _module[moduleName] = this.get(moduleName)
+      const _key = `${moduleName.charAt(0).toLocaleLowerCase()}${moduleName.slice(1)}`
+      _module[_key] = this.get(moduleName)
+    })
+  }
+  allAdd(_addModuleList: AddModuleArray): void {
+    _addModuleList.forEach((module) => {
+      module.length === 1
+        ? this.add(module[0].moduleName, module[0])
+        : this.add(module[0].moduleName, module[0], module[1])
     })
   }
 }
