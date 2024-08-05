@@ -18,7 +18,7 @@ export class PatchAction implements ActionInterface {
   get commandInfo(): CommandInfo {
     return {
       name: 'patch',
-      alias: ['p', 'pp', 'p1'],
+      alias: ['p', 'pc'],
       desc: this.i18nService.t('CMD_PATCH_DESC'),
       action(_option) {
         console.log(_option)

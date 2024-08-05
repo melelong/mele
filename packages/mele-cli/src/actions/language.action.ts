@@ -30,7 +30,7 @@ export class LanguageAction implements ActionInterface, LanguageInterface {
     const config = this.i18nService.readConfig()
     return {
       name: 'language',
-      alias: ['lang'],
+      alias: ['l', 'lang'],
       desc: this.i18nService.t('CMD_LANGUAGE_DESC'),
       action: async (_option) => {
         const spinner = this.consoleService.ora()

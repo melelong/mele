@@ -18,7 +18,7 @@ export class CreateAction implements ActionInterface {
   get commandInfo(): CommandInfo {
     return {
       name: 'create <project>',
-      alias: ['new'],
+      alias: ['c', 'new'],
       desc: this.i18nService.t('CMD_CREATE_DESC'),
       action(_option) {
         console.log(_option)
