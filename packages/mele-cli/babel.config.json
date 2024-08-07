@@ -19,6 +19,7 @@
       {
         "corejs": 3
       }
-    ]
+    ],
+    "@babel/plugin-transform-nullish-coalescing-operator" // ?? 语法
   ]
 }

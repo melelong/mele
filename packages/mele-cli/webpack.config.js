@@ -2,7 +2,7 @@
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const webpack = require('webpack')
 const patterns = [
   {
@@ -52,6 +52,15 @@ const config = {
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
+        include: [
+          // 生产依赖
+          path.resolve(__dirname, 'node_modules/commander'),
+          path.resolve(__dirname, 'node_modules/ejs'),
+          path.resolve(__dirname, 'node_modules/figlet'),
+          path.resolve(__dirname, 'node_modules/i18n'),
+          path.resolve(__dirname, 'node_modules/inquirer'),
+          path.resolve(__dirname, 'node_modules/ora')
+        ],
         use: {
           loader: 'babel-loader'
         }
@@ -60,7 +69,9 @@ const config = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'src'),
+      'node:events': 'events',
+      'node:process': 'process'
     },
     extensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.cjs', '...']
   },
@@ -92,20 +103,20 @@ module.exports = () => {
   // 预发布
   if (NODE_ENV === 'pre') {
     config.mode = 'production'
-    config.plugins.push(
-      new BundleAnalyzerPlugin({
-        analyzerPort: 8888
-      })
-    )
+    // config.plugins.push(
+    //   new BundleAnalyzerPlugin({
+    //     analyzerPort: 8888
+    //   })
+    // )
   }
   // 开发
   if (NODE_ENV === 'dev') {
     config.mode = 'development'
-    config.plugins.push(
-      new BundleAnalyzerPlugin({
-        analyzerPort: 8888
-      })
-    )
+    // config.plugins.push(
+    //   new BundleAnalyzerPlugin({
+    //     analyzerPort: 8888
+    //   })
+    // )
     config.devtool = 'eval-source-map'
   }
   return config

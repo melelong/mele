@@ -6,7 +6,7 @@ import { FileService } from '@/services/file.service'
 import { I18nService } from '@/services/i18n.service'
 import { ActionInterface } from '@/types/interfaces/action.interface'
 import { LanguageInterface } from '@/types/interfaces/language.interface'
-import rawlist from '@inquirer/rawlist'
+import inquirer from 'inquirer'
 /**
  * language 命令(中间容器 ActionModule )
  */
@@ -35,12 +35,14 @@ export class LanguageAction implements ActionInterface, LanguageInterface {
       action: async (_option) => {
         const spinner = this.consoleService.ora()
         try {
-          const answers = await rawlist({
+          const { language } = await inquirer.prompt({
+            type: 'rawlist',
+            name: 'language',
             message: this.i18nService.t('MSG_CMD_LANGUAGE_1'),
             choices
           })
-          if (answers !== config.i18n.defaultLocale) {
-            config.i18n.defaultLocale = answers
+          if (language !== config.i18n.defaultLocale) {
+            config.i18n.defaultLocale = language
             this.fileService.writeFile(CLI_CONFIG_PATH, JSON.stringify(config))
           }
           spinner.succeed(this.i18nService.t('MSG_CMD_LANGUAGE_OK'))
