@@ -9,10 +9,6 @@ export interface I18nInterface {
    */
   get i18n(): I18n
   /**
-   *  读取配置
-   */
-  readConfig(): CliConfig
-  /**
    * 初始化
    * @param _options 配置
    */

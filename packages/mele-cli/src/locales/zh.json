@@ -1,5 +1,9 @@
 {
   "CMD_MELE_DESC": "一个前端脚手架工具",
+  "CMD_MELE_EXIT": "退出命令",
+  "CMD_MELE_INSTALL_START": "正在安装中...",
+  "CMD_MELE_CHECKBOX_ONE": "至少要选一个",
+  "CMD_MELE_PACKAGE_MANAGER": "请选择包管理工具",
   "CMD_MELE_USAGE": "[命令] [参数]",
   "CMD_VERSION_DESC": "查看版本信息",
   "CMD_CREATE_DESC": "创建一个新项目",
@@ -9,5 +13,11 @@
   "MSG_CMD_LANGUAGE_OK": "设置语言成功",
   "MSG_CMD_LANGUAGE_EXIT": "退出设置",
   "CMD_PATCH_DESC": "向现有项目添加补丁",
-  "CMD_GENERATE_DESC": "生成文件"
+  "MSG_CMD_PATCH_1": "请选择补丁内容",
+  "MSG_CMD_PATCH_2": "当前项目是否为 'pnpm monorepo' 项目",
+  "CMD_GENERATE_DESC": "生成文件",
+  "MSG_CLI_INFO_NOT_FOUND": "找不到脚手架信息",
+  "MSG_PJ_INFO_NOT_FOUND": "当前项目没有 'package.json' 文件，请先初始化项目",
+  "MSG_CLI_CONFIG_NOT_FOUND": "找不到脚手架配置 'cli.config.json' 文件",
+  "MSG_CLI_DEPENDENCY_V_NOT_FOUND": "找不到脚手架依赖版本映射 'dependency.v.json' 文件"
 }

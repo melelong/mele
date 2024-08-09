@@ -1,23 +1,21 @@
-import { CLI_CONFIG_PATH } from '@/constants/cli.const'
 import { ActionModule } from '@/modules/action.module'
 import { CmdService } from '@/services/cmd.service'
+import { ConfigService } from '@/services/config.service'
 import { ConsoleService } from '@/services/console.service'
-import { FileService } from '@/services/file.service'
 import { I18nService } from '@/services/i18n.service'
 import { ActionInterface } from '@/types/interfaces/action.interface'
-import { LanguageInterface } from '@/types/interfaces/language.interface'
 import inquirer from 'inquirer'
 /**
  * language 命令(中间容器 ActionModule )
  */
-export class LanguageAction implements ActionInterface, LanguageInterface {
+export class LanguageAction implements ActionInterface {
   static moduleName: string = 'LanguageAction'
   private readonly cmdService: CmdService
   private readonly i18nService: I18nService
-  private readonly fileService: FileService
+  private readonly configService: ConfigService
   private readonly consoleService: ConsoleService
   constructor(private readonly actionModule?: ActionModule) {
-    actionModule.allInjection(this)
+    if (actionModule) actionModule.allInjection(this)
   }
   init() {
     this.cmdService.addInfo(this.commandInfo)
@@ -27,7 +25,7 @@ export class LanguageAction implements ActionInterface, LanguageInterface {
       name: item,
       value: item
     }))
-    const config = this.i18nService.readConfig()
+    const config = this.configService.cliConfig
     return {
       name: 'language',
       alias: ['l', 'lang'],
@@ -35,15 +33,15 @@ export class LanguageAction implements ActionInterface, LanguageInterface {
       action: async (_option) => {
         const spinner = this.consoleService.ora()
         try {
-          const { language } = await inquirer.prompt({
+          const { locale } = await inquirer.prompt({
             type: 'rawlist',
-            name: 'language',
+            name: 'locale',
             message: this.i18nService.t('MSG_CMD_LANGUAGE_1'),
             choices
           })
-          if (language !== config.i18n.defaultLocale) {
-            config.i18n.defaultLocale = language
-            this.fileService.writeFile(CLI_CONFIG_PATH, JSON.stringify(config))
+          if (locale !== config.i18n.defaultLocale) {
+            config.i18n.defaultLocale = locale
+            this.configService.updateConfig(config)
           }
           spinner.succeed(this.i18nService.t('MSG_CMD_LANGUAGE_OK'))
         } catch {

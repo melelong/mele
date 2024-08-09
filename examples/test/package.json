@@ -6,11 +6,27 @@
   "scripts": {
     "mele": "mele",
     "ttt": "pnpm i & cls & pnpm mele -h",
-    "tt": "pnpm i & cls & pnpm mele -h"
+    "tt": "pnpm i & cls & pnpm mele -h",
+    "v:20": "nvm use 20 & mele",
+    "v:19": "nvm use 19 & mele",
+    "v:18": "nvm use 18 & mele",
+    "v:17": "nvm use 17 & mele",
+    "v:16": "nvm use 16 & mele",
+    "v:15": "nvm use 15 & mele",
+    "v:14": "nvm use 14 & mele",
+    "v:13": "nvm use 13 & mele",
+    "v:12": "nvm use 12 & mele"
   },
   "dependencies": {
     "mele-cli": "workspace:*"
   },
   "author": "melelong",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "8.57.0",
+    "husky": "9.1.4",
+    "lint-staged": "15.2.8",
+    "prettier": "3.3.3",
+    "typescript": "5.5.4"
+  }
 }

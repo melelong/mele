@@ -1,14 +1,15 @@
 import { CreateAction } from '@/actions/create.action'
 import { ContainerService } from '@/services/container.service'
-import { FileService } from '@/services/file.service'
 import { PatchAction } from '@/actions/patch.action'
 import { CmdService } from '@/services/cmd.service'
 import { LanguageAction } from '@/actions/language.action'
 import { ConsoleService } from '@/services/console.service'
 import { ActionModule } from '@/modules/action.module'
 import { CmdModule } from '@/modules/cmd.module'
+import { ConfigModule } from '@/modules/config.module'
 import { AddModuleArray } from '@/types/interfaces/container.interface'
 import { GenerateAction } from '@/actions/generate.action'
+import { ConfigService } from '@/services/config.service'
 /**
  * 主模块依赖容器
  */
@@ -17,7 +18,7 @@ export class MainModule extends ContainerService {
     super()
     // 方法1: 全部添加
     const addModuleArray: AddModuleArray = [
-      [FileService],
+      [ConfigService, ConfigModule],
       [CmdService, CmdModule],
       [ConsoleService],
       [CreateAction, ActionModule],
@@ -28,7 +29,7 @@ export class MainModule extends ContainerService {
     this.allAdd(addModuleArray)
     // 方法2: 一个一个添加
     // 添加服务依赖
-    // this.add(FileService.moduleName, FileService)
+    // this.add(ConfigService.moduleName, ConfigModule)
     // this.add(CmdService.moduleName, CmdService, CmdModule)
     // this.add(ConsoleService.moduleName, ConsoleService)
     // 添加命令动作依赖

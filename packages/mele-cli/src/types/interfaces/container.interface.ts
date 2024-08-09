@@ -12,7 +12,7 @@ export type ModuleFnType = {
 /**
  * 模块依赖容器构造函数类型
  */
-export type ContainerFnType = new (..._args: any[]) => any
+export type ContainerFnType = ConstructorFnType
 /**
  * 添加模块类型数组
  */

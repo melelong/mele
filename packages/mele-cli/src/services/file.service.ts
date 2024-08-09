@@ -1,8 +1,8 @@
 import { CLI_ENCODING_TYPE } from '@/constants/cli.const'
-import { FileInterface } from '@/types/interfaces/file.interface'
+import { DependentEnvInfoType, FileInterface, PathType } from '@/types/interfaces/file.interface'
 import { PathOrFileDescriptor, readFileSync, WriteFileOptions, writeFileSync } from 'fs'
 /**
- * 工具服务具体实现
+ * 文件服务具体实现
  */
 export class FileService implements FileInterface {
   static moduleName: string = 'FileService'
@@ -15,6 +15,10 @@ export class FileService implements FileInterface {
     _options
       ? writeFileSync(_path, _data, _options)
       : writeFileSync(_path, _data, CLI_ENCODING_TYPE)
+  }
+  dynamicWriteFile(_path: PathType, _info: DependentEnvInfoType): void {
+    console.log(_path)
+    console.log(_info)
   }
   get cwdPath(): string {
     return process.cwd()

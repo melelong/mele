@@ -10,9 +10,13 @@ export class ConsoleService implements ConsoleInterface {
   /**
    * 背景字命令白名单
    */
-  private static _BG_WhiteList: string[] = ['-h', '--help']
+  private static _BG_WhiteList: string[] = ['-h', '--help', 'help']
   paintBG(_str: string) {
-    if (!this.isInWhitelist(ConsoleService._BG_WhiteList)) return
+    // 不在白名单中
+    if (!this.isInWhitelist(ConsoleService._BG_WhiteList)) {
+      // 不是单独运行mele
+      if (process.argv.length !== 2) return
+    }
     parseFont('Banner3-D', Banner3D)
     const BG = textSync(_str, {
       font: 'Banner3-D',
@@ -27,7 +31,6 @@ export class ConsoleService implements ConsoleInterface {
     ConsoleService._BG_WhiteList = [...ConsoleService._BG_WhiteList, ..._opts]
   }
   isInWhitelist(_whiteList: string[]): boolean {
-    console.log(process.argv)
     return process.argv.filter((item) => _whiteList.includes(item)).length !== 0
   }
   ora(_options?: string | Options): Ora {

@@ -1,5 +1,39 @@
 {
   "i18n": {
-    "defaultLocale": "en"
-  }
+    "defaultLocale": "zh"
+  },
+  "packageManager": [
+    {
+      "name": "npm",
+      "cmd": {
+        "install": "npm install -D",
+        "uninstall": "npm uninstall"
+      }
+    },
+    {
+      "name": "pnpm",
+      "cmd": {
+        "install": "pnpm add -D",
+        "uninstall": "pnpm remove"
+      }
+    }
+  ],
+  "patch": [
+    {
+      "nodeName": "husky & lint-staged",
+      "dependency": ["husky", "lint-staged"]
+    },
+    {
+      "nodeName": "eslint",
+      "dependency": ["eslint"]
+    },
+    {
+      "nodeName": "prettier",
+      "dependency": ["prettier"]
+    },
+    {
+      "nodeName": "typescript",
+      "dependency": ["typescript"]
+    }
+  ]
 }

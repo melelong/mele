@@ -1,5 +1,9 @@
 {
   "CMD_MELE_DESC": "A front-end scaffolding tool",
+  "CMD_MELE_EXIT": "Exit command",
+  "CMD_MELE_INSTALL_START": "Installing...",
+  "CMD_MELE_CHECKBOX_ONE": "At least one should be selected",
+  "CMD_MELE_PACKAGE_MANAGER": "Please choose a package management tool",
   "CMD_MELE_USAGE": "[command] [options]",
   "CMD_VERSION_DESC": "View version info",
   "CMD_CREATE_DESC": "Create a new project",
@@ -9,5 +13,11 @@
   "MSG_CMD_LANGUAGE_OK": "Language setting successful",
   "MSG_CMD_LANGUAGE_EXIT": "Exit Settings",
   "CMD_PATCH_DESC": "Add patches to existing projects",
-  "CMD_GENERATE_DESC": "Generate file"
+  "MSG_CMD_PATCH_1": "Please select patch content",
+  "MSG_CMD_PATCH_2": "Is the current project a 'pnpm monorepo' project",
+  "CMD_GENERATE_DESC": "Generate file",
+  "MSG_CLI_INFO_NOT_FOUND": "Unable to find scaffold information",
+  "MSG_PJ_INFO_NOT_FOUND": "The current project does not have a 'package.json' file. Please initialize the project first",
+  "MSG_CLI_CONFIG_NOT_FOUND": "Unable to find the scaffold configuration file 'cli.config.json'",
+  "MSG_CLI_DEPENDENCY_V_NOT_FOUND": "Unable to find scaffold dependency version mapping 'dependency. v. json' file"
 }

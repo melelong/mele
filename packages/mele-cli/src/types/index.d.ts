@@ -6,6 +6,12 @@ declare type EncodingType = {
   flag?: string | undefined
 } | null
 /**
+ * 依赖关系类型
+ */
+declare type Dependencies = {
+  [moduleName: string]: string
+}
+/**
  * package.json
  */
 declare type PackageJson = {
@@ -16,23 +22,13 @@ declare type PackageJson = {
   scripts?: {
     [scriptName: string]: string
   }
-  devDependencies?: {
-    [packageName: string]: string
-  }
-  dependencies?: {
-    [packageName: string]: string
-  }
+  devDependencies?: Dependencies
+  dependencies?: Dependencies
 }
 /**
- * cli.config.json
+ * 构造函数类型
  */
-declare type CliConfig = {
-  /**
-   * 国际化配置
-   */
-  i18n: i18n.ConfigurationOptions
-}
-
+declare type ConstructorFnType = new (..._args: any[]) => any
 /**
  * 命令信息
  */

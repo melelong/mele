@@ -25,13 +25,13 @@ export class CmdService implements CmdInterface {
   private readonly i18nService: I18nService
   private readonly consoleService: ConsoleService
   constructor(private readonly cmdModule?: CmdModule) {
-    // 注入依赖
-    this.i18nService = cmdModule.get(I18nService.moduleName)
-    this.consoleService = cmdModule.get(ConsoleService.moduleName)
-    // 设置命令用法信息
-    CmdService._cmd.usage(`${this.i18nService.t('CMD_MELE_USAGE')}`)
-    // 设置命令描述
-    CmdService._cmd.description(this.i18nService.t('CMD_MELE_DESC'))
+    if (cmdModule) {
+      cmdModule.allInjection(this)
+      // 设置命令用法信息
+      CmdService._cmd.usage(`${this.i18nService.t('CMD_MELE_USAGE')}`)
+      // 设置命令描述
+      CmdService._cmd.description(this.i18nService.t('CMD_MELE_DESC'))
+    }
   }
   get cmd(): Command {
     return CmdService._cmd
