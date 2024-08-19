@@ -5,9 +5,7 @@ on:
     branches:
       - release/**
       - release
-
-concurrency: ${{ github.workflow }}-${{ github.ref }}
-
+      
 jobs:
   release:
     name: Release
@@ -41,7 +39,12 @@ jobs:
         run: pnpm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
 
       - name: Config npm
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
       
       - name: Publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm release
+
