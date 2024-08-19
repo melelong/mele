@@ -34,10 +34,14 @@ jobs:
         run: cat ./packages/mele-cli/package.json
 
       - name: Authenticate with npm registry
-        run: pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+        env: 
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
 
       - name: Config npm
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+        env: 
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
       
       - name: Publish
         run: pnpm release
