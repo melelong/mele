@@ -31,17 +31,13 @@ jobs:
       - name: Check Build
         run: cat ./packages/mele-cli/package.json
 
-      - name: Secrets To Env Var
-        run: |
-          echo "NPM_TOKEN=${{ secrets.NPM_TOKEN }}" >> "$GITHUB_ENV"
-
       - name: Authenticate with npm registry
-        run: pnpm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+        run: pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
 
       - name: Config npm
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
       
       - name: Publish
         env:
