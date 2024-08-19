@@ -12,8 +12,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    env: 
-      NPM_AUTH: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -36,10 +34,10 @@ jobs:
         run: cat ./packages/mele-cli/package.json
 
       - name: Authenticate with npm registry
-        run: pnpm config set //registry.npmjs.org/:_authToken=${NPM_AUTH}
+        run: pnpm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
 
       - name: Config npm
-        run: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH}" > .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
       
       - name: Publish
         run: pnpm release
