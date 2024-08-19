@@ -1,0 +1,7 @@
+{
+  "$schema": "../../schemas/dependency.v.schema.json",
+  "name": "@eslint/js",
+  "v": {
+    "12": { "v": "8.57.0", "pkgInject": {} }
+  }
+}

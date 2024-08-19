@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/dependency.v.schema.json",
+  "name": "eslint",
+  "v": {
+    "12": {
+      "v": "8.57.0",
+      "pkgInject": {
+        "scripts": {
+          "lint": "eslint . --fix"
+        }
+      },
+      "configFile": [
+        {
+          "name": "eslint.config",
+          "type": "mjs",
+          "output": ".",
+          "templates": ["patch/default/eslint/eslint.config.ejs"]
+        }
+      ]
+    }
+  }
+}

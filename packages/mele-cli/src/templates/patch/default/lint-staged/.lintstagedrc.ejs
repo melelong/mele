@@ -1,0 +1,6 @@
+{
+    "**/*.{js,ts,json}": [
+    <% if (locals.eslint) { %>"eslint . --fix"<% } %><% if (locals.eslint && locals.prettier) { %>,<% } %>
+    <% if (locals.prettier) { %>"prettier . --write"<% } %>
+    ]
+}

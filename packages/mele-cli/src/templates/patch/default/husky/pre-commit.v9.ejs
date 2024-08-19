@@ -1,0 +1,6 @@
+<% if (locals['lint-staged']) { %>
+npm run stage
+<% } %>
+<% if (!locals['lint-staged']) { %>
+npm run husky:test
+<% } %>

@@ -1,0 +1,44 @@
+{
+  /* 编译器选项配置，用于指导TypeScript如何编译代码 */
+  "compilerOptions": {
+    /* 指定编译后输出文件的目录 */
+    "outDir": "./bin",
+    /* 设置项目的根目录，用于解析相对路径 */
+    "baseUrl": "./",
+    /* 指定目标JavaScript版本 */
+    "target": "ES5",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    /* 允许在TypeScript项目中使用JavaScript文件 */
+    "allowJs": true,
+    /* 指定模块解析策略 */
+    "moduleResolution": "node",
+    /* 指定模块系统 */
+    "module": "CommonJS",
+    /* 允许使用ES6模块导出的语法 */
+    "esModuleInterop": true,
+    /* 在导入文件名大小写不一致时仍能正确导入 */
+    "forceConsistentCasingInFileNames": false,
+    /* 跳过库文件的类型检查，加快编译速度 */
+    "skipLibCheck": true,
+    /* 生成类型声明文件 */
+    "declaration": false,
+    /* 不输出注释 */
+    "removeComments": true,
+    /* 允许非默认导出的模块使用default导入 */
+    "allowSyntheticDefaultImports": true,
+    /* 启用增量构建，提高构建效率 */
+    "incremental": true,
+    /* 严格检查null值的赋值和传播 */
+    "strictNullChecks": false,
+    /* 允许隐式any类型 */
+    "noImplicitAny": false,
+    /* 严格检查bind、call和apply的使用 */
+    "strictBindCallApply": false,
+    /* 禁止switch语句中case穿透 */
+    "noFallthroughCasesInSwitch": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "bin"]
+}

@@ -1,0 +1,44 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - release
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    env: 
+      NPM_AUTH: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Pnpm
+        run: npm install -g pnpm
+
+      - name: Install Dependencies
+        run: pnpm i --no-frozen-lockfile
+
+      - name: Build
+        run: pnpm build:ci
+
+      - name: Check Build
+        run: cat ./packages/mele-cli/package.json
+
+      - name: Authenticate with npm registry
+        run: pnpm config set //registry.npmjs.org/:_authToken=${NPM_AUTH}
+
+      - name: Config npm
+        run: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH}" > .npmrc
+      
+      - name: Publish
+        run: pnpm release

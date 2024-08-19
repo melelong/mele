@@ -1,0 +1,10 @@
+{
+  "$schema": "../schemas/dependency.v.schema.json",
+  "name": "eslint-config-prettier",
+  "v": {
+    "12": {
+      "v": "9.1.0",
+      "pkgInject": {}
+    }
+  }
+}

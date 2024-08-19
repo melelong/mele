@@ -1,0 +1,15 @@
+{
+  "name": "test",
+  "version": "2.0.0",
+  "description": "用于测试packages中脚手架命令和功能",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "mele": "mele",
+    "t:i": "pnpm link mele-cli",
+    "t:uni": "pnpm remove mele-cli",
+    "t:update": "pnpm t:uni && pnpm t:i"
+  },
+  "author": "melelong",
+  "license": "MIT"
+}

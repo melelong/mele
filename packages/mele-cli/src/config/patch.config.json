@@ -1,0 +1,87 @@
+{
+  "$schema": "./schemas/patch.config.schema.json",
+  "patch": [
+    {
+      "nodeName": "husky",
+      "dependency": [
+        {
+          "name": "husky",
+          "dep": []
+        }
+      ]
+    },
+    {
+      "nodeName": "lint-staged",
+      "dependency": [
+        {
+          "name": "lint-staged",
+          "dep": []
+        }
+      ]
+    },
+    {
+      "nodeName": "eslint",
+      "dependency": [
+        {
+          "name": "eslint",
+          "dep": []
+        },
+        {
+          "name": "globals",
+          "dep": ["eslint"]
+        },
+        {
+          "name": "@eslint/js",
+          "dep": ["eslint"]
+        },
+        {
+          "name": "eslint-config-prettier",
+          "dep": ["eslint", "prettier"]
+        },
+        {
+          "name": "eslint-plugin-prettier",
+          "dep": ["eslint", "prettier"]
+        },
+        {
+          "name": "@typescript-eslint/parser",
+          "dep": ["eslint", "typescript"]
+        },
+        {
+          "name": "@typescript-eslint/eslint-plugin",
+          "dep": ["eslint", "typescript"]
+        },
+        {
+          "name": "eslint-plugin-vue",
+          "dep": ["eslint", "vue"]
+        }
+      ]
+    },
+    {
+      "nodeName": "prettier",
+      "dependency": [
+        {
+          "name": "prettier",
+          "dep": []
+        }
+      ]
+    },
+    {
+      "nodeName": "typescript",
+      "dependency": [
+        {
+          "name": "typescript",
+          "dep": []
+        }
+      ]
+    },
+    {
+      "nodeName": "@changesets/cli",
+      "dependency": [
+        {
+          "name": "@changesets/cli",
+          "dep": []
+        }
+      ]
+    }
+  ]
+}

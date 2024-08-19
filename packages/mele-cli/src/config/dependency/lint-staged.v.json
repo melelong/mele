@@ -1,0 +1,54 @@
+{
+  "$schema": "../schemas/dependency.v.schema.json",
+  "name": "lint-staged",
+  "v": {
+    "20": {
+      "v": "15.2.8",
+      "pkgInject": {
+        "scripts": {
+          "stage": "lint-staged"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".lintstagedrc",
+          "type": "json",
+          "output": ".",
+          "templates": ["patch/default/lint-staged/.lintstagedrc.ejs"]
+        }
+      ]
+    },
+    "18": {
+      "v": "14.0.1",
+      "pkgInject": {
+        "scripts": {
+          "stage": "lint-staged"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".lintstagedrc",
+          "type": "json",
+          "output": ".",
+          "templates": ["patch/default/lint-staged/.lintstagedrc.ejs"]
+        }
+      ]
+    },
+    "12": {
+      "v": "12.5.0",
+      "pkgInject": {
+        "scripts": {
+          "stage": "lint-staged"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".lintstagedrc",
+          "type": "json",
+          "output": ".",
+          "templates": ["patch/default/lint-staged/.lintstagedrc.ejs"]
+        }
+      ]
+    }
+  }
+}

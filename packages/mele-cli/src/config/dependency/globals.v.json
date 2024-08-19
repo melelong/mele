@@ -1,0 +1,8 @@
+{
+  "$schema": "../schemas/dependency.v.schema.json",
+  "name": "globals",
+  "v": {
+    "18": { "v": "15.9.0", "pkgInject": {} },
+    "12": { "v": "13.24.0", "pkgInject": {} }
+  }
+}

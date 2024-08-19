@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "patch.config.json",
+  "description": "patch.config.json格式",
+  "type": "object",
+  "required": ["patch"],
+  "properties": {
+    "patch": {
+      "type": "array",
+      "description": "patch命令配置",
+      "items": {
+        "type": "object",
+        "description": "单个patch选项配置",
+        "required": ["nodeName", "dependency"],
+        "properties": {
+          "nodeName": {
+            "type": "string",
+            "description": "补丁选项名称"
+          },
+          "dependency": {
+            "type": "array",
+            "description": "补丁可能使用的依赖项",
+            "items": {
+              "type": "object",
+              "description": "单个补丁依赖项",
+              "required": ["name", "dep"],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "依赖项名称"
+                },
+                "dep": {
+                  "type": "array",
+                  "description": "依赖性关联的依赖项",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

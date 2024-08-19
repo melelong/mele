@@ -1,0 +1,50 @@
+{
+  "$schema": "../schemas/dependency.v.schema.json",
+  "name": "prettier",
+  "v": {
+    "14": {
+      "v": "3.3.3",
+      "pkgInject": {
+        "scripts": {
+          "format": "prettier . --write"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".prettierignore",
+          "type": "",
+          "output": ".",
+          "templates": ["patch/default/prettier/.prettierignore.ejs"]
+        },
+        {
+          "name": ".prettierrc",
+          "type": "cjs",
+          "output": ".",
+          "templates": ["patch/default/prettier/.prettierrc.ejs"]
+        }
+      ]
+    },
+    "12": {
+      "v": "2.8.8",
+      "pkgInject": {
+        "scripts": {
+          "format": "prettier . --write"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".prettierignore",
+          "type": "",
+          "output": ".",
+          "templates": ["patch/default/prettier/.prettierignore.ejs"]
+        },
+        {
+          "name": ".prettierrc",
+          "type": "cjs",
+          "output": ".",
+          "templates": ["patch/default/prettier/.prettierrc.ejs"]
+        }
+      ]
+    }
+  }
+}

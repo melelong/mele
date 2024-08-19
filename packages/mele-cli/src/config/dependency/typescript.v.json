@@ -1,0 +1,40 @@
+{
+  "$schema": "../schemas/dependency.v.schema.json",
+  "name": "typescript",
+  "v": {
+    "15": {
+      "v": "5.5.4",
+      "pkgInject": {
+        "scripts": {
+          "ts:init": "tsc --init",
+          "ts:build": "tsc"
+        }
+      },
+      "configFile": [
+        {
+          "name": "tsconfig",
+          "type": "json",
+          "output": ".",
+          "templates": ["patch/default/typescript/tsconfig.ejs"]
+        }
+      ]
+    },
+    "12": {
+      "v": "4.9.5",
+      "pkgInject": {
+        "scripts": {
+          "ts:init": "tsc --init",
+          "ts:build": "tsc"
+        }
+      },
+      "configFile": [
+        {
+          "name": "tsconfig",
+          "type": "json",
+          "output": ".",
+          "templates": ["patch/default/typescript/tsconfig.ejs"]
+        }
+      ]
+    }
+  }
+}

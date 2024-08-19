@@ -1,0 +1,101 @@
+{
+  "name": "mele-cli",
+  "version": "0.0.12",
+  "description": "A front-end scaffolding tool",
+  "main": "./bin/index.cjs",
+  "bin": {
+    "mele": "./bin/index.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melelong/mele.git"
+  },
+  "bugs": {
+    "url": "https://github.com/melelong/mele/issues"
+  },
+  "homepage": "https://github.com/melelong/mele#readme",
+  "scripts": {
+    "ts:init": "tsc --init",
+    "ts:build": "tsc",
+    "ts:run": "ts-node",
+    "l": "npm link mele-cli",
+    "l:undo": "npm unlink mele-cli",
+    "webpack:init": "webpack init",
+    "build": "webpack --mode=production --node-env=pre",
+    "build:pre": "webpack --mode=production --node-env=pre",
+    "build:dev": "webpack --mode=development --node-env=dev",
+    "build:ci": "webpack --mode=production --node-env=ci",
+    "watch": "webpack --watch",
+    "dev": "ts-node ./src/index.ts",
+    "lint": "eslint . --fix",
+    "format": "prettier . --write"
+  },
+  "files": [
+    "bin",
+    "package.json",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "keywords": [
+    "mele",
+    "mele-cli",
+    "front-end",
+    "format",
+    "eslint",
+    "husky",
+    "prettier",
+    "vue",
+    "react",
+    "angular"
+  ],
+  "author": "melelong",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.24.7",
+    "@babel/plugin-transform-property-mutators": "^7.24.7",
+    "@babel/plugin-transform-runtime": "^7.24.7",
+    "@babel/preset-env": "^7.25.2",
+    "@eslint/js": "^9.8.0",
+    "@types/ejs": "^3.1.5",
+    "@types/figlet": "^1.5.8",
+    "@types/i18n": "^0.13.12",
+    "@types/inquirer": "^8.2.6",
+    "@types/node": "^22.0.0",
+    "@types/sharp": "0.30.5",
+    "@webpack-cli/generators": "^3.0.7",
+    "babel-loader": "^9.1.3",
+    "babel-plugin-formatjs": "^10.5.16",
+    "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "eslint": "~8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.8.0",
+    "prettier": "^3.3.3",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^7.18.0",
+    "webpack": "^5.93.0",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.25.0",
+    "@formatjs/intl-segmenter": "^11.5.7",
+    "ajv": "^8.17.1",
+    "chalk": "^4.1.2",
+    "commander": "9.5.0",
+    "core-js": "3",
+    "ejs": "^3.1.10",
+    "figlet": "^1.7.0",
+    "i18n": "^0.15.1",
+    "inquirer": "8.2.6",
+    "ora": "5.4.1",
+    "sharp": "0.30.7"
+  },
+  "engines": {
+    "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+  }
+}

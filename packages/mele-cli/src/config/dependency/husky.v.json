@@ -1,0 +1,124 @@
+{
+  "$schema": "../schemas/dependency.v.schema.json",
+  "name": "husky",
+  "v": {
+    "18": {
+      "v": "9.1.4",
+      "init": [
+        "node -e \"if(!require('fs').existsSync('.git'))require('child_process').execSync('git init -b main');\"",
+        "npx husky init",
+        "echo npm run husky:test > .husky/pre-commit"
+      ],
+      "pkgInject": {
+        "scripts": {
+          "husky:test": "echo \"Error: husky test\" && exit 1",
+          "prepare": "husky install"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".gitignore",
+          "type": "",
+          "output": ".",
+          "templates": ["patch/default/husky/.gitignore.ejs"]
+        },
+        {
+          "name": "pre-commit",
+          "type": "",
+          "output": "./.husky",
+          "templates": ["patch/default/husky/pre-commit.v9.ejs"]
+        }
+      ]
+    },
+    "15": {
+      "v": "8.0.3",
+      "init": [
+        "node -e \"if(!require('fs').existsSync('.git'))require('child_process').execSync('git init -b main');\"",
+        "npm run prepare",
+        "echo #!/usr/bin/env sh >> .husky/pre-commit",
+        "echo . \"$(dirname -- \"$0\")/_/husky.sh\" >> .husky/pre-commit",
+        "npx husky add .husky/pre-commit \"npm run husky:test\""
+      ],
+      "pkgInject": {
+        "scripts": {
+          "husky:test": "echo \"Error: husky test\" && exit 1",
+          "prepare": "husky install"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".gitignore",
+          "type": "",
+          "output": ".",
+          "templates": ["patch/default/husky/.gitignore.ejs"]
+        },
+        {
+          "name": "pre-commit",
+          "type": "",
+          "output": "./.husky",
+          "templates": ["patch/default/husky/pre-commit.ejs"]
+        }
+      ]
+    },
+    "14": {
+      "v": "8.0.3",
+      "init": [
+        "node -e \"if(!require('fs').existsSync('.git'))require('child_process').execSync('git init -b main');\"",
+        "npm run prepare",
+        "echo #!/usr/bin/env sh >> .husky/pre-commit",
+        "echo . \"$(dirname -- \"$0\")/_/husky.sh\" >> .husky/pre-commit",
+        "echo npm run husky:test >> .husky/pre-commit"
+      ],
+      "pkgInject": {
+        "scripts": {
+          "husky:test": "echo \"Error: husky test\" && exit 1",
+          "prepare": "husky install"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".gitignore",
+          "type": "",
+          "output": ".",
+          "templates": ["patch/default/husky/.gitignore.ejs"]
+        },
+        {
+          "name": "pre-commit",
+          "type": "",
+          "output": "./.husky",
+          "templates": ["patch/default/husky/pre-commit.ejs"]
+        }
+      ]
+    },
+    "12": {
+      "v": "7.0.4",
+      "init": [
+        "node -e \"if(!require('fs').existsSync('.git'))require('child_process').execSync('git init -b main');\"",
+        "npm run prepare",
+        "echo #!/usr/bin/env sh >> .husky/pre-commit",
+        "echo . \"$(dirname -- \"$0\")/_/husky.sh\" >> .husky/pre-commit",
+        "echo npm run husky:test >> .husky/pre-commit"
+      ],
+      "pkgInject": {
+        "scripts": {
+          "husky:test": "echo \"Error: husky test\" && exit 1",
+          "prepare": "husky install"
+        }
+      },
+      "configFile": [
+        {
+          "name": ".gitignore",
+          "type": "",
+          "output": ".",
+          "templates": ["patch/default/husky/.gitignore.ejs"]
+        },
+        {
+          "name": "pre-commit",
+          "type": "",
+          "output": "./.husky",
+          "templates": ["patch/default/husky/pre-commit.ejs"]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "../../schemas/dependency.v.schema.json",
+  "name": "@typescript-eslint/eslint-plugin",
+  "v": {
+    "20": { "v": "7.18.0", "pkgInject": {} },
+    "16": { "v": "6.21.0", "pkgInject": {} },
+    "12": { "v": "5.62.0", "pkgInject": {} }
+  }
+}

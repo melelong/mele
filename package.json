@@ -1,0 +1,31 @@
+{
+  "name": "mele",
+  "version": "0.0.1",
+  "description": "A front-end scaffolding tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "pnpm --filter=mele-cli lint",
+    "format": "pnpm --filter=mele-cli format",
+    "build:ci":"pnpm --filter=mele-cli build:ci",
+    "stage": "lint-staged",
+    "prepare": "husky install",
+    "changeset": "changeset",
+    "changeset:v": "changeset version",
+    "npm:push": "changeset publish",
+    "release": "changeset publish --access public --no-git-checks"
+  },
+  "author": "melelong",
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "2.27.7",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.8"
+  },
+  "lint-staged": {
+    "packages/mele-cli/**/*.{js,cjs,mjs,ts,json}": [
+      "pnpm --filter=mele-cli lint",
+      "pnpm --filter=mele-cli format"
+    ]
+  }
+}

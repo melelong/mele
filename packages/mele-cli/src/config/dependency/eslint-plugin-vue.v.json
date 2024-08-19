@@ -1,0 +1,8 @@
+{
+  "$schema": "../schemas/dependency.v.schema.json",
+  "name": "eslint-plugin-vue",
+  "v": {
+    "16": { "v": "9.27.0", "pkgInject": {} },
+    "12": { "v": "8.7.1", "pkgInject": {} }
+  }
+}

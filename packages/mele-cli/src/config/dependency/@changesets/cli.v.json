@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/dependency.v.schema.json",
+  "name": "@changesets/cli",
+  "v": {
+    "12": {
+      "v": "2.27.7",
+      "init": ["npx changeset init"],
+      "pkgInject": {
+        "scripts": {
+          "changeset": "changeset",
+          "changeset:v": "changeset version",
+          "publish": "changeset publish",
+          "release": "changeset publish --registry=https://registry.npmjs.com/ --access=public"
+        }
+      }
+    }
+  }
+}

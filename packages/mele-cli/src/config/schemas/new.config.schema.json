@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "new.config.json",
+  "description": "new.config.json格式",
+  "type": "object",
+  "required": ["new"],
+  "properties": {
+    "new": {
+      "type": "array",
+      "description": "new命令配置",
+      "items": {
+        "type": "object",
+        "description": "单个new选项配置",
+        "required": ["nodeName", "template"],
+        "properties": {
+          "nodeName": {
+            "type": "string",
+            "description": "new命令选项名称"
+          },
+          "template": {
+            "type": "object",
+            "properties": {
+              "js": {
+                "type": "object",
+                "description": "js模板配置"
+              },
+              "ts": {
+                "type": "object",
+                "description": "ts模板配置"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

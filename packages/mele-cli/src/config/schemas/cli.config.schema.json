@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "cli.config.json",
+  "description": "cli.config.json格式",
+  "type": "object",
+  "required": ["i18n", "packageManager"],
+  "properties": {
+    "i18n": {
+      "type": "object",
+      "description": "i18n配置",
+      "required": ["defaultLocale"],
+      "properties": {
+        "defaultLocale": {
+          "type": "string",
+          "description": "默认语言",
+          "enum": ["en", "zh-CN", "zh-TW", "ja", "ko"]
+        }
+      }
+    },
+    "packageManager": {
+      "type": "array",
+      "description": "包管理器配置",
+      "items": {
+        "type": "object",
+        "description": "单个包管理器配置",
+        "required": ["name", "cmd"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "包管理器名称"
+          },
+          "cmd": {
+            "type": "object",
+            "description": "包管理器命令",
+            "required": ["installD", "installS", "installG", "uninstall"],
+            "properties": {
+              "installD": {
+                "type": "string",
+                "description": "开发依赖安装命令"
+              },
+              "installS": {
+                "type": "string",
+                "description": "生产依赖安装命令"
+              },
+              "installG": {
+                "type": "string",
+                "description": "全局依赖安装命令"
+              },
+              "uninstall": {
+                "type": "string",
+                "description": "卸载依赖命令"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

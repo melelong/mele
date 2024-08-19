@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "<dependencyName>.v.json",
+  "description": "<dependencyName>.v.json格式",
+  "type": "object",
+  "required": ["name", "v"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "依赖名称"
+    },
+    "v": {
+      "type": "object",
+      "description": "node版本与依赖版本映射",
+      "patternProperties": {
+        "^(?:[1-9][0-9]{0,2}|[1-9][0-9]{3,})$": {
+          "type": "object",
+          "description": "node大版本，当前项目node版本大于等于当前配置版本",
+          "required": ["v", "pkgInject"],
+          "properties": {
+            "v": {
+              "type": "string",
+              "description": "当前node配置版本兼容的依赖版本"
+            },
+            "init": {
+              "type": "array",
+              "description": "初始化需要的所有命令",
+              "items": {
+                "type": "string",
+                "description": "初始化命令"
+              }
+            },
+            "pkgInject": {
+              "type": "object",
+              "description": "需要注入package.json的内容",
+              "properties": {
+                "scripts": {
+                  "type": "object",
+                  "description": "脚本内容",
+                  "additionalProperties": {
+                    "type": "string",
+                    "description": "脚本命令"
+                  }
+                }
+              }
+            },
+            "configFile": {
+              "type": "array",
+              "description": "依赖需要的配置文件",
+              "items": {
+                "type": "object",
+                "description": "单个配置文件配置",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "配置文件名"
+                  },
+                  "type": {
+                    "type": "string",
+                    "description": "配置文件类型"
+                  },
+                  "output": {
+                    "type": "string",
+                    "description": "配置文件输出路径"
+                  },
+                  "templates": {
+                    "type": "array",
+                    "description": "配置文件模板",
+                    "items": {
+                      "type": "string",
+                      "description": "单个模板"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

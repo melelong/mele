@@ -1,0 +1,38 @@
+// 导入插件
+import globals from 'globals'
+import pluginJs from '@eslint/js'
+<% if(locals['eslint-config-prettier']) { %>// eslint-config-prettier
+import eslintConfigPrettier from "eslint-config-prettier"<% } %>
+<% if(locals['eslint-plugin-prettier']) { %>// eslint-plugin-prettier
+import pluginPrettier from "eslint-plugin-prettier"<% } %>
+<% if(locals['@typescript-eslint/parser']) { %>// @typescript-eslint/parser
+import tsParser from "@typescript-eslint/parser"<% } %>
+<% if(locals['@typescript-eslint/eslint-plugin']) { %>// @typescript-eslint/eslint-plugin
+import pluginTs from "@typescript-eslint/eslint-plugin"<% } %>
+<% if(locals['eslint-plugin-vue']) { %>// eslint-plugin-vue
+import pluginVue from "eslint-plugin-vue"<% } %>
+// 导出配置
+export default [
+  {files: ["src/**/*.{js,mjs,cjs,ts,vue}"]},
+  pluginJs.configs.recommended,
+  {languageOptions: { globals:{
+    ...globals.browser,
+    ...globals.node
+  }}},
+  <% if(locals['eslint-plugin-vue']) { %>...pluginVue.configs["flat/essential"],<% } %>
+  <% if(locals['eslint-config-prettier']) { %>eslintConfigPrettier,<% } %>
+  <% if(locals['eslint-plugin-prettier']) { %>{
+    plugins: {
+      pluginPrettier
+    }
+  },<% } %>
+  <% if(locals['@typescript-eslint/eslint-plugin']) { %>{
+    plugins: {
+      pluginTs
+    }
+  },<% } %>
+  <% if(locals['@typescript-eslint/eslint-plugin']) { %>{
+    files: ["src/**/*.{js,mjs,cjs,ts,vue}"],
+    languageOptions:{parserOptions:{parser:tsParser}}
+  },<% } %>
+]
