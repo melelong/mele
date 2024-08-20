@@ -1,6 +1,6 @@
 {
   "name": "mele-cli",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A front-end scaffolding tool",
   "main": "./bin/index.cjs",
   "bin": {
