@@ -4,20 +4,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const webpack = require('webpack')
-const patterns = [
-  {
-    from: './src/locales',
-    to: './locales'
-  },
-  {
-    from: './src/config',
-    to: './config'
-  },
-  {
-    from: './src/templates',
-    to: './templates'
-  }
-]
 const config = {
   entry: ['./src/index.ts'],
   output: {
@@ -33,9 +19,6 @@ const config = {
     new webpack.BannerPlugin({
       raw: true,
       banner: '#!/usr/bin/env node'
-    }),
-    new CopyPlugin({
-      patterns
     })
   ],
   module: {
@@ -92,23 +75,29 @@ module.exports = () => {
   // 生产
   if (NODE_ENV === 'ci') {
     config.mode = 'production'
-    patterns.push({
-      from: './package.json',
-      to: '../package.json',
-      transform(content) {
-        // 置空依赖，避免生产环境安装的时候，自动安装无用的依赖包，大大避免空间浪费
-        const packageJson = JSON.parse(content.toString())
-        packageJson[`__dependencies`] = packageJson.dependencies
-        packageJson[`__devDependencies`] = packageJson.devDependencies
-        packageJson.devDependencies = {}
-        const { sharp } = packageJson.dependencies
-        packageJson.dependencies = {
-          // 安装不能打包的库
-          sharp
-        }
-        return JSON.stringify(packageJson, null, 2)
-      }
-    })
+    config.plugins.push(
+      new CopyPlugin({
+        patterns: [
+          {
+            from: './package.json',
+            to: '../package.json',
+            transform(content) {
+              // 置空依赖，避免生产环境安装的时候，自动安装无用的依赖包，大大避免空间浪费
+              const packageJson = JSON.parse(content.toString())
+              packageJson[`__dependencies`] = packageJson.dependencies
+              packageJson[`__devDependencies`] = packageJson.devDependencies
+              packageJson.devDependencies = {}
+              const { sharp } = packageJson.dependencies
+              packageJson.dependencies = {
+                // 安装不能打包的库
+                sharp
+              }
+              return JSON.stringify(packageJson, null, 2)
+            }
+          }
+        ]
+      })
+    )
   }
   // 预发布
   if (NODE_ENV === 'pre') {

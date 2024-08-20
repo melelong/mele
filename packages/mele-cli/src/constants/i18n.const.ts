@@ -3,7 +3,7 @@ import { join } from 'path'
 /**
  * 国际化文件目录路径
  */
-export const I18N_DIR_PATH = join(__dirname, '/locales')
+export const I18N_DIR_PATH = join(__dirname, '../locales')
 /**
  * 默认语言
  */

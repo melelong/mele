@@ -32,6 +32,9 @@
   },
   "files": [
     "bin",
+    "configs",
+    "locales",
+    "templates",
     "package.json",
     "CHANGELOG.md",
     "README.md"

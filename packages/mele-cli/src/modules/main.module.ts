@@ -12,6 +12,7 @@ import { GenerateAction } from '@/actions/generate.action'
 import { ConfigService } from '@/services/config.service'
 import { InfoAction } from '@/actions/info.action'
 import { ZipAction } from '@/actions/zip.action'
+import { UiAction } from '@/actions/ui.action'
 /**
  * 主模块依赖容器
  */
@@ -28,7 +29,8 @@ export class MainModule extends ContainerService {
       [PatchAction, ActionModule],
       [InfoAction, ActionModule],
       [GenerateAction, ActionModule],
-      [ZipAction, ActionModule]
+      [ZipAction, ActionModule],
+      [UiAction, ActionModule]
     ]
     this.allAdd(addModuleArray)
     // 方法2: 一个一个添加

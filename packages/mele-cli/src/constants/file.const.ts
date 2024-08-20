@@ -2,7 +2,7 @@ import { join } from 'path'
 /**
  * 模板路径
  */
-export const FILE_TEMPLATE_PATH = join(__dirname, 'templates')
+export const FILE_TEMPLATE_PATH = join(__dirname, '../templates')
 /**
  * 关于补丁命令的模板路径
  */
