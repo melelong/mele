@@ -15,7 +15,7 @@ export const CLI_DEFAULT_VERSION = '未知版本号'
 /**
  * 配置目录路径
  */
-export const CLI_CONFIG_DIR_PATH = join(__dirname, '/config')
+export const CLI_CONFIG_DIR_PATH = join(__dirname, '../configs')
 /**
  * 配置格式目录路径
  */

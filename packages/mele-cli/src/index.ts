@@ -13,7 +13,8 @@ import { ConsoleService } from '@/services/console.service'
 import { GenerateAction } from '@/actions/generate.action'
 import { BootStrapInterface } from '@/types/interfaces/bootStrap.interface'
 import { InfoAction } from '@/actions/info.action'
-import { ZipAction } from './actions/zip.action'
+import { ZipAction } from '@/actions/zip.action'
+import { UiAction } from '@/actions/ui.action'
 /**
  * 启动
  */
@@ -27,6 +28,7 @@ class BootStrap implements BootStrapInterface {
   private readonly infoAction: InfoAction
   private readonly generateAction: GenerateAction
   private readonly zipAction: ZipAction
+  private readonly uiAction: UiAction
   constructor(_mainModule: ConstructorFnType) {
     this.check()
     const mainModule = new _mainModule()
@@ -49,6 +51,7 @@ class BootStrap implements BootStrapInterface {
     this.languageAction.init()
     this.newAction.init()
     this.patchAction.init()
+    this.uiAction.init()
     this.generateAction.init()
     this.zipAction.init()
     this.cmdService.register()
