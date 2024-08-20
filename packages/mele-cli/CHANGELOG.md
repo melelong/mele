@@ -1,5 +1,11 @@
 # mele-cli
 
+## 0.0.13
+
+### Patch Changes
+
+- 修改配置目录、i18n目录和模板目录的路径
+
 ## 0.0.12
 
 ### Patch Changes
